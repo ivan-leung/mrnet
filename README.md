@@ -11,6 +11,7 @@ Each MRI examination consists of 3 image stacks, one each for the sagittal, axia
 ## Model Training
 Transfer learning was used to generate image features to train the model. This simple architecture was selected to leverage the high-level understanding of images that the transfer learning model possesses, and to overcome hardware limitations in training complex models without GPU access. The ResnNt50 pre-trained on ImageNet was used as the transfer learning model (https://keras.io/applications/#resnet). MaxPooling and concatenation operations were performed on the feature vectors (which were obtained by passing the images through the pre-trained model) to produce the input features of the same dimension (3x2048) for each MRI examination.
 To train the model quickly (given the hardware constraints), a dense layer immediately follows the input features to model the diagnoses. The trained models for each of the 3 diagnoses were saved under the data/models directory.
+Note that the training code described in this section is not included in this submission code repository.
 
 ## Diagnoses Prediction
 The validation and test data are similarly pre-processed using the pre-trained ResNet50 model and maxpooling and concatenation steps described above. Using the saved models, the diagnoses were predicted and logged for submissions. To test the diagnoses using these models:
