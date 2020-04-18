@@ -1,0 +1,1 @@
+docker run -it --rm -v $PWD/src:/app/src -v $PWD/data/:/app/data --entrypoint "python" mrnet src/main.py src/input_data.csv src/output.csv
